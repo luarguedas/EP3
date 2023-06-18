@@ -1,25 +1,51 @@
-public class Cliente {
+import jakarta.persistence.*;
 
-    private String nombres;
-    private String apellidos;
+@Entity
+@Table(name = "cliente")
+public class Clientes {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "nombre", nullable = false, length = 150)
+    private String nombre;
+
+    @Column(name = "apellido", nullable = false, length = 150)
+    private String apellido;
+
+    @Column(name = "correo", nullable = false, length = 150, unique = true)
     private String correo;
 
+    @Column(name = "celular", nullable = false, length = 9, unique = true)
     private String celular;
 
-    public String getNombres() {
-        return nombres;
+    public Clientes(){
+
     }
 
-    public void setNombres(String nombres) {
-        this.nombres = nombres;
+    public Long getId() {
+        return id;
     }
 
-    public String getApellidos() {
-        return apellidos;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
     }
 
     public String getCorreo() {
